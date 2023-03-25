@@ -1,16 +1,16 @@
-package come.basim.realproject
+package come.basim.realproject.ui.main
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import come.basim.realproject.data.Repository.Repository
-import come.basim.realproject.data.model.AchievementsResponseModel
+import data.Repository.Repository
+import data.model.AchievementsResponseModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class MainViewModel : ViewModel() {
-    private val repository = Repository()
-    val getAchievementSuccessLiveData: MutableLiveData<List<AchievementsResponseModel>> =
+    private val repository = data.Repository.Repository()
+    val getAchievementSuccessLiveData: MutableLiveData<List<data.model.AchievementsResponseModel>> =
         MutableLiveData()
 
     val getAchievementErorrLiveData: MutableLiveData<Exception> =

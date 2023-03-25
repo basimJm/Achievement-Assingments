@@ -6,7 +6,7 @@
     <data>
 <variable
     name="model"
-    type="come.basim.realproject.data.model.AchievementsResponseModel" />
+    type="data.model.AchievementsResponseModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -45,6 +45,7 @@
             tools:text="4 of 6" />
 
         <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycle_view_model"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="5dp"

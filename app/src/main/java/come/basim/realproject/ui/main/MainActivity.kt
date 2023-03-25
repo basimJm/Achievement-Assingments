@@ -1,15 +1,24 @@
-package come.basim.realproject
+package come.basim.realproject.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.LayoutInflater
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
+import come.basim.realproject.R
+import come.basim.realproject.databinding.ActivityMainBinding
+import come.basim.realproject.databinding.RowModelBinding
+import come.basim.realproject.ui.main.adapter.AchievementAdapter
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var binding:ActivityMainBinding
     private lateinit var viewModel: MainViewModel
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding =ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
        initViewModel()
     initObserver()
@@ -18,11 +27,12 @@ class MainActivity : AppCompatActivity() {
 
     private fun initObserver() {
     viewModel.getAchievementSuccessLiveData.observe(this){response ->
-        Toast.makeText(this ,"success = $response" ,Toast.LENGTH_LONG).show()
+        binding.recycleViewAchievement.adapter=AchievementAdapter(response)
+
     }
 
         viewModel.getAchievementErorrLiveData.observe(this){e ->
-            Toast.makeText(this,"erorr =${e.localizedMessage} ",Toast.LENGTH_LONG).show()
+
         }
     }
 
